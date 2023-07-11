@@ -9,7 +9,7 @@ import {
 import { Account } from "@zilliqa-js/account";
 import { isolatedServer, getResolversFromAccount } from "../src/testing";
 import { GZIL } from "./GZIL/build/bind";
-import { Long } from "@zilliqa-js/zilliqa";
+import { Long } from "@zilliqa-js/util";
 import { SDKResolvers } from "../src/";
 import { expect } from "chai";
 

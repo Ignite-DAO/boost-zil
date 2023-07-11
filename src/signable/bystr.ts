@@ -1,6 +1,25 @@
 import { Signable, sha256 } from "./shared";
-import { normaliseAddress } from "../utill";
-import { getAddressFromPublicKey, toBech32Address } from "@zilliqa-js/crypto";
+import {
+  getAddressFromPublicKey,
+  toBech32Address,
+  fromBech32Address,
+  toChecksumAddress,
+} from "@zilliqa-js/crypto";
+import { validation } from "@zilliqa-js/util";
+
+export const normaliseAddress = (address: string): string => {
+  if (validation.isBech32(address)) {
+    return fromBech32Address(address);
+  }
+
+  if (!validation.isAddress(address.replace("0x", ""))) {
+    throw Error(
+      "Wrong address format, should be either bech32 or checksummed address"
+    );
+  }
+
+  return toChecksumAddress(address);
+};
 
 abstract class ByStrSignable extends Signable {
   value: string;
@@ -9,7 +28,6 @@ abstract class ByStrSignable extends Signable {
     this.value = v;
   }
 }
-
 
 abstract class AnyByStr extends ByStrSignable {
   constructor(v: string) {

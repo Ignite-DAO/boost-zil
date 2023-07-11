@@ -8,7 +8,7 @@ export default `import {
 import { Account } from "@zilliqa-js/account";
 import { isolatedServer, getResolversFromAccount } from "boost-zil/lib/testing";
 import { SlotMachine } from "../src/SmartContract/build/bind";
-import { Long } from "@zilliqa-js/zilliqa";
+import { Long } from "@zilliqa-js/util";
 
 let admin: ByStr20;
 let adminPubKey: ByStr33;
@@ -53,4 +53,4 @@ describe("on blockchain", async () => {
         // TODO: do more tests
     });
 });
-`
+`;

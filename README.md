@@ -87,7 +87,8 @@ Have a read through the bind to understand how it works.
 ```typescript
 import {SDKResolvers, Uint128} from 'boost-zil'
 import {SlotMachine} from './test/SlotMachine/build/bind'
-import {Zilliqa, Long} from "@zilliqa-js/zilliqa";
+import {Zilliqa} from "@zilliqa-js/zilliqa";
+import {Long} from "@zilliqa-js/util";
 
 const runtimeconfig = {
   "nodeUrl": "https://api.zilliqa.com/",
@@ -165,7 +166,8 @@ const resolvers: SDKResolvers = {
 ```typescript
 import {Uint128, ByStr20} from 'boost-zil'
 import {SlotMachine} from './test/SlotMachine/build/bind'
-import {Zilliqa, Long} from "@zilliqa-js/zilliqa";
+import {Zilliqa} from "@zilliqa-js/zilliqa";
+import {Long} from "@zilliqa-js/util";
 
 
 (async () => {
@@ -197,7 +199,8 @@ import {Zilliqa, Long} from "@zilliqa-js/zilliqa";
 ```typescript
 import { List, Pair, ScillaString, ByStr20 } from "boost-zil";
 import { SlotMachine } from "./test/SlotMachine/build/bind";
-import { Zilliqa, Long } from "@zilliqa-js/zilliqa";
+import { Zilliqa } from "@zilliqa-js/zilliqa";
+import { Long } from "@zilliqa-js/util";
 
 (async () => {
   // consider the ignite dao global config contract
@@ -265,18 +268,19 @@ You can do that but using sdks is recommended. (the sdks use this under the hood
 
 ```typescript
 const addr = new ByStr20("some address");
-const tokens = ["fungible token 1", "fungible token 2", "fungible token 3"]
-.map(t => new ByStr20(t))
+const tokens = ["fungible token 1", "fungible token 2", "fungible token 3"].map(
+  (t) => new ByStr20(t)
+);
 
 const states = await partialState(async () => getNoSignerZil())(
-          ...tokens.map((t) => ({
-              contractAddress: t,
-              includeInit: "false" as "false",
-              query: {
-                  balances: { [addr]: "*" as "*" },
-              },
-          })),
-      );
+  ...tokens.map((t) => ({
+    contractAddress: t,
+    includeInit: "false" as "false",
+    query: {
+      balances: { [addr]: "*" as "*" },
+    },
+  }))
+);
 ```
 
 ## Get partial state for multiple contracts as map
@@ -308,9 +312,8 @@ expect(
   typeof state[gzil.toBech32()].balances[bigGzilHodler.lowerCase()] !=
     "undefined"
 ).to.be.true;
-expect(
-  typeof state[zilswap.toBech32()].pools[gzil.lowerCase()] != "undefined"
-).to.be.true;
+expect(typeof state[zilswap.toBech32()].pools[gzil.lowerCase()] != "undefined")
+  .to.be.true;
 ```
 
 ## Test smart contracts
@@ -338,33 +341,33 @@ Transfer 🔥
 Success.
 Events🕵️‍♀️
 TransferSuccess
-sender: 
+sender:
 "0xd90f2e538ce0df89c8273cad3b63ec44a3c4ed82"
-recipient: 
+recipient:
 "0x06c586241ae6c6fe02de96b4683b4f45e6868643"
-amount: 
+amount:
 "2000000000000000"
 Mint 🔥
 Success.
 Events🕵️‍♀️
 Minted
-minter: 
+minter:
 "0xd90f2e538ce0df89c8273cad3b63ec44a3c4ed82"
-recipient: 
+recipient:
 "0x97a89084fe8bacdc2e8e7298c0c3d27bae4f92e5"
-amount: 
+amount:
 "660000000000000"
 ```
 
 ## SDK types
 
 ```typescript
-import {Uint128,ByStr20} from 'boost-zil'
+import { Uint128, ByStr20 } from "boost-zil";
 
 /**
- * Any sdk type like Uint128 and ByStr20 
- * List Pair 
- * Custom ADT 
+ * Any sdk type like Uint128 and ByStr20
+ * List Pair
+ * Custom ADT
  * Exist so that they streamline formatting and sending transactions
  * to the blockchain.
  * There are many quirks when it comes to the transactions, such as custom user ADTs
@@ -376,9 +379,11 @@ import {Uint128,ByStr20} from 'boost-zil'
 
 // every type class exposes a .toSend() which recursively formats the message to the //// blockchain in conjunction with the contract sdks
 
-const addr = new ByStr20("any address as long as it is an address bech32 or bystr20").toSend();
+const addr = new ByStr20(
+  "any address as long as it is an address bech32 or bystr20"
+).toSend();
 
-// addr now will be a formatted address and will be interpreted by the blockchain 
+// addr now will be a formatted address and will be interpreted by the blockchain
 // correctly! same goes for any other type
 
 // since gzil has 15 decimals to get 2.1 gzil all you have to do is:
@@ -386,7 +391,11 @@ const twoGzil = Uint128.fromFraction("2.1", 15);
 // now twoGzil can be used in a transfer transaction to the GZIL contract !
 
 // if you want a formatted human readable string for a frontend:
-const humanReadableTwoGzil = Uint128.fromStringtoFraction(twoGzil.toSend(), 15, 3);
+const humanReadableTwoGzil = Uint128.fromStringtoFraction(
+  twoGzil.toSend(),
+  15,
+  3
+);
 // humanReadableTwoGzil is now "2.100"
 
 // more advanced but pays off :)
@@ -398,7 +407,6 @@ const threeGzil = Uint128.fromFractionUint128(twoGzil, "3.5");
 expect(threeGzil.toSend()).to.be.equal("3500000000000000");
 expect(threeGzil.getReadable()).to.be.equal("3.500");
 expect(twoGzil.getReadable()).to.be.equal("2.000");
-
 ```
 
 ## Full project examples

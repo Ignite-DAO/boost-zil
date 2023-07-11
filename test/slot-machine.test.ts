@@ -12,7 +12,7 @@ import {
 import { Account } from "@zilliqa-js/account";
 import { isolatedServer, getResolversFromAccount } from "../src/testing";
 import { SlotMachine } from "./SlotMachine/build/bind";
-import { Long } from "@zilliqa-js/zilliqa";
+import { Long } from "@zilliqa-js/util";
 import { sendZIL, SDKResolvers } from "../src/";
 
 let admin: ByStr20;

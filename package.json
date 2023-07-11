@@ -2,7 +2,7 @@
   "name": "boost-zil",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
-  "version": "1.1.15",
+  "version": "1.1.16",
   "scripts": {
     "clean": "rimraf lib",
     "build": "npm run clean && tsc",
@@ -19,35 +19,25 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@zilliqa-js/zilliqa": "^3.0.0",
-    "big.js": "^6.1.1",
+    "@zilliqa-js/zilliqa": "^3.4.3",
+    "big.js": "^6.2.1",
     "create-hash": "^1.2.0",
-    "get-random-values": "^1.2.2",
+    "get-random-values": "^2.1.0",
     "isomorphic-fetch": "^3.0.0",
-    "prettier": "^2.4.1",
+    "prettier": "^3.0.0",
     "randombytes": "^2.1.0"
   },
   "devDependencies": {
-    "@types/bn.js": "^4.11.6",
-    "@types/chai": "^4.2.22",
+    "@types/bn.js": "^5.1.1",
+    "@types/chai": "^4.3.5",
     "@types/create-hash": "^1.2.2",
-    "@types/isomorphic-fetch": "^0.0.35",
-    "@types/long": "^4.0.1",
-    "@types/mocha": "^9.0.0",
-    "@types/node": "^16.4.0",
-    "@types/prettier": "^2.4.1",
-    "mocha": "^9.1.2",
-    "rimraf": "^3.0.2",
-    "typedoc": "^0.22.6",
-    "typescript": "^4.4.3"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/MszBednarski/boost-zil.git"
-  },
-  "author": "MszBednarski",
-  "bugs": {
-    "url": "https://github.com/MszBednarski/boost-zil/issues"
-  },
-  "homepage": "https://github.com/MszBednarski/boost-zil#readme"
+    "@types/isomorphic-fetch": "^0.0.36",
+    "@types/mocha": "^10.0.1",
+    "@types/node": "^16.18.38",
+    "@types/prettier": "^2.7.3",
+    "mocha": "^10.2.0",
+    "rimraf": "^5.0.1",
+    "typedoc": "^0.24.8",
+    "typescript": "^4.9.5"
+  }
 }

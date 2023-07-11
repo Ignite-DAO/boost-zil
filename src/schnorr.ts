@@ -24,7 +24,7 @@ import { BN } from "@zilliqa-js/util";
 import { randomBytes } from "./random";
 import { Signature } from "./signature";
 
-const secp256k1 = elliptic.ec("secp256k1");
+const secp256k1 = new elliptic.ec("secp256k1");
 const curve = secp256k1.curve;
 const PRIVKEY_SIZE_BYTES = 32;
 // Public key is a point (x, y) on the curve.

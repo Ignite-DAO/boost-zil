@@ -76,7 +76,7 @@ export async function buildBind(
     );
     let bindings = sdkCode;
     try {
-      bindings = format(sdkCode, {
+      bindings = await format(sdkCode, {
         parser: "babel-ts",
         insertPragma: true,
       });

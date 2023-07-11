@@ -10,7 +10,7 @@ import {
 import { Account } from "@zilliqa-js/account";
 import { isolatedServer, getResolversFromAccount } from "boost-zil/lib/testing";
 import { GZIL } from "../src/SmartContract/build/bind";
-import { Long } from "@zilliqa-js/zilliqa";
+import { Long } from "@zilliqa-js/util";
 import { expect } from "chai";
 
 let admin: ByStr20;

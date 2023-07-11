@@ -1,6 +1,7 @@
-import { Zilliqa, BN, Long } from "@zilliqa-js/zilliqa";
+import { Zilliqa } from "@zilliqa-js/zilliqa";
 import { Transaction } from "@zilliqa-js/account";
 import { ByStr20, ByStr33, Uint128 } from "./signable";
+import { BN, Long } from "@zilliqa-js/util";
 
 export const MAGENTA = "\x1B[35m%s\x1b[0m";
 

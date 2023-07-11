@@ -3,27 +3,8 @@ import { Account } from "@zilliqa-js/account";
 import { Signable } from "./signable/shared";
 import { ByStr20, ByStr64 } from "./signable/bystr";
 import { ScillaString, Uint128 } from "./signable";
-import {
-  fromBech32Address,
-  toChecksumAddress,
-  Zilliqa,
-} from "@zilliqa-js/zilliqa";
-import { validation } from "@zilliqa-js/util";
+import { Zilliqa } from "@zilliqa-js/zilliqa";
 import { SDKResolvers } from ".";
-
-export const normaliseAddress = (address: string): string => {
-  if (validation.isBech32(address)) {
-    return fromBech32Address(address);
-  }
-
-  if (!validation.isAddress(address.replace("0x", ""))) {
-    throw Error(
-      "Wrong address format, should be either bech32 or checksummed address"
-    );
-  }
-
-  return toChecksumAddress(address);
-};
 
 /**
  * sign

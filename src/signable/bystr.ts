@@ -51,7 +51,7 @@ export class ByStr20 extends ByStrSignable {
   static zeroVal = "0x0000000000000000000000000000000000000000";
   constructor(v: string) {
     super(v);
-    this.value = normaliseAddress(v);
+    this.value = v == "" ? ByStr20.zeroVal : normaliseAddress(v);
   }
   static fromPubKey(key: string) {
     return new ByStr20(getAddressFromPublicKey(key));
